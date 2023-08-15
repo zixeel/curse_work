@@ -30,8 +30,10 @@ def sort_op_list(op_list):
 
 def hide_nums(number):
     """Принимает номер счёт отправителя определяет какая это карта или счёт и москирует данные на выходе в соответсвии с требованиями курсовой"""
-    if number.startswith('Счет'):
-        return '**'+number[-4:]
+    if number is None:
+        return ''
+    elif number.startswith('Счет'):
+        return 'Cчёт '+'**'+number[-4:]
     elif number.startswith('Visa Platinum'):
         number = number.replace('Visa Platinum ', '')
         return 'Visa Platinum' + ' ' + number[0:4] + " " + number[4:6] + '**' + ' ' + '****' + ' ' + number[-4:]
@@ -53,5 +55,13 @@ def hide_nums(number):
 
 
 def represent_date(date):
-    return date[-2:]+'.'+date[5:7]+'.'+date[:4]
+    """Принимает дату и выводит её в необходимом формате"""
+    return date[8:10]+'.'+date[5:7]+'.'+date[:4]
 
+
+def get_user_msg(formatted_data, formatted_to, formatted_from,description, operationAmount, name):
+    """принимает всю форматированю информацию и делает из неё сообщение для пользователя"""
+    return f"""{formatted_data} {description} 
+{formatted_to} -> {formatted_from}
+{operationAmount} {name}
+"""
