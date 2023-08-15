@@ -52,6 +52,6 @@ def hide_nums(number):
         return 'МИР' + ' ' + number[0:4] + " " + number[4:6] + '**' + ' ' + '****' + ' ' + number[-4:]
 
 
-
-
+def represent_date(date):
+    return date[-2:]+'.'+date[5:7]+'.'+date[:4]
 
